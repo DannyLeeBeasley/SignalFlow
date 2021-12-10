@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :pedals, only: [:index, :show, :create]
-  resources :pedalboard_pedals, only: [:index, :show, :create, :destroy]
+  resources :pedals
+  resources :pedalboard_pedals
   resources :pedalboards 
-  resources :users, only: [:index, :show, :create]
+  resources :users
   resources :sessions, only: [:index, :create]
   get '/logout', to: 'sessions#destroy'
   # Routing logic: fallback requests for React Router.

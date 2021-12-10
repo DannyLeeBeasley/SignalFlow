@@ -1,8 +1,11 @@
 import React, { Component, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Form } from "semantic-ui-react";
 import "./Pedals.css";
 
-function NewPedal({ addNewPedal }) {
+function NewPedal({ addNewPedal, user }) {
+  console.log(user);
+  let history = useHistory();
   const [name, setName] = useState("");
   const [effectType, setEffectType] = useState("");
   const [isStereo, setIsStereo] = useState(false);
@@ -31,15 +34,11 @@ function NewPedal({ addNewPedal }) {
       }),
     })
       .then((res) => res.json())
-      .then((newPedal) => addNewPedal(newPedal));
-    window.location.href = "/pedals";
+      .then((newPedal) => {
+        addNewPedal(newPedal)
+        history.push("/pedals");
+      });
   }
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console.log("test", e.target.pedalName.value, e.target.stereo.value);
-  //   window.location.href = "/pedalboards";
-  // };
 
   return (
     <div className="new-pedal">
@@ -150,8 +149,6 @@ function NewPedal({ addNewPedal }) {
             onChange={(e) => {
               setImage(e.target.value);
             }}
-            // value={selectedFile}
-            // onChange={(e) => setSelectedFile(e.target.files[0])}
           />
         </label>
         <br />

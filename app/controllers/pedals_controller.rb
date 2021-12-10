@@ -1,6 +1,6 @@
 class PedalsController < ApplicationController
-    wrap_parameters format: []
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    wrap_parameters format: []
     skip_before_action :authorize, only: [:index]
 
     def index
@@ -18,17 +18,17 @@ class PedalsController < ApplicationController
         render json: pedal, status: :created
     end
 
-    # def update
-    #     pedal = find_pedal
-    #     pedal.update(pedal_params)
-    #     render json: pedal, status: :created 
-    # end
+    def update
+        pedal = find_pedal
+        pedal.update(pedal_params)
+        render json: pedal, status: :created 
+    end
 
-    # def destroy
-    #     pedal = find_pedal
-    #     pedal.destroy
-    #     head :no_content
-    # end
+    def destroy
+        pedal = find_pedal
+        pedal.destroy
+        head :no_content
+    end
 
     private
 

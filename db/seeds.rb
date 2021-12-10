@@ -2,6 +2,8 @@ puts "🌱 Seeding..."
 puts "Deleting old data..."
 User.destroy_all
 Pedal.destroy_all
+Pedalboard.destroy_all
+PedalboardPedal.destroy_all
 
 puts "Creating Users..."
 dan = User.create(username: "DannyLeeBeasley", password: "TrickyPassword13!")

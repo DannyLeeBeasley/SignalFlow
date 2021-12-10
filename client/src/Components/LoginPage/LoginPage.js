@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-// import PropTypes from "prop-types";
 import "./LoginPage.css";
 
 function LoginPage({ setUser, user }) {

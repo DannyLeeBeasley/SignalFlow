@@ -4,8 +4,9 @@ class ApplicationController < ActionController::API
   before_action :authorize
 
   def authorize
+    byebug
     @current_user = User.find_by(id:session[:user_id])
-    render json: {error:["Not authorized"]}, status: :unauthorized unless @current_user
+    render json: {error:["Create an Account or Login"]}, status: :unauthorized unless @current_user
   end 
 
 end

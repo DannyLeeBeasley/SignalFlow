@@ -14,9 +14,11 @@ import { useEffect, useState } from "react";
 const API_PATH = `http://localhost:3000/`;
 
 function App() {
+  const [user, setUser] = useState(null);
   const [pedals, setPedals] = useState([]);
   const [pedalboards, setPedalboards] = useState([]);
-  const [user, setUser] = useState(null);
+  const [pedalboardPedals, setPedalboardPedals] = useState([]);
+  
 
   const history = useHistory();
 
@@ -38,7 +40,7 @@ function App() {
     fetch("/pedalboards")
       .then((res) => res.json())
       .then((pedalboards) => {
-        console.log("pbnj", pedalboards);
+        console.log(pedalboards);
         setPedalboards(pedalboards);
       });
   }, []);
@@ -46,14 +48,14 @@ function App() {
   useEffect(() => {
     fetch("/pedalboard_pedals")
       .then((res) => res.json())
-      .then((pedalboards) => {
-        console.log("pbnj", pedalboards);
-        setPedalboards(pedalboards);
+      .then((pedalboardPedals) => {
+        console.log(pedalboardPedals);
+        setPedalboardPedals(pedalboardPedals);
       });
   }, []);
 
   function addNewPedal(newPedal) {
-    const updatedPedalArray = [...pedals, newPedal];
+    const updatedPedalArray = [newPedal, ...pedals];
     setPedals(updatedPedalArray);
   }
 
@@ -72,9 +74,9 @@ function App() {
     })
       .then((res) => res.json())
       .then((newPedal) => addNewPedalboard(newPedal));
-      // const updatedPedalboardArray = [...pedalboards].filter((pedalboard) => pedalboard.id !== itemToDelete.id);
-      // setPedalboards(updatedPedalboardArray);
-      history.push("/pedalboards");
+    // const updatedPedalboardArray = [...pedalboards].filter((pedalboard) => pedalboard.id !== itemToDelete.id);
+    // setPedalboards(updatedPedalboardArray);
+    history.push("/pedalboards");
   }
 
   return (
@@ -90,16 +92,17 @@ function App() {
           </Route>
           <Route exact path="/pedals">
             <Pedals
+              user={user}
               pedals={pedals}
               setPedals={setPedals}
               addNewPedal={addNewPedal}
             />
           </Route>
           <Route exact path="/mypedals">
-            <MyPedals pedals={pedals} />
+            <MyPedals user={user} pedals={pedals} />
           </Route>
           <Route exact path="/newpedal">
-            <NewPedal />
+            <NewPedal user={user} addNewPedal={addNewPedal} />
           </Route>
           <Route exact path="/pedalboards">
             <PedalBoards
@@ -121,7 +124,7 @@ function App() {
             />
           </Route>
           <Route exact path="/">
-            <Home />
+            <Home user={user} />
           </Route>
         </Switch>
       </div>

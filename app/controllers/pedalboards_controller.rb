@@ -4,8 +4,7 @@ class PedalboardsController < ApplicationController
     skip_before_action :authorize
 
     def index
-        pedalboards = Pedalboard.all
-                       
+        pedalboards = Pedalboard.all  
         render json: pedalboards.as_json(include: :pedals), status: :ok 
     end
 
@@ -15,7 +14,6 @@ class PedalboardsController < ApplicationController
     end
 
     def create 
-        # byebug
         pedalboard = Pedalboard.create(pedalboard_params)
         render json: pedalboard, status: :created
     end

@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
+    wrap_parameters format: []
     skip_before_action :authorize, only: [:create, :index]
 
     def index
+        session[:user_id] ||= 'hey'
         render json: {cookies:cookies.to_hash, session:session}
     end 
  
