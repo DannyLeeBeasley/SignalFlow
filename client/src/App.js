@@ -1,13 +1,23 @@
 import "./App.css";
-import React, { useState } from "react";
-import HomePage from "./Components/HomePage/HomePage";
+import React, { useState, useEffect } from "react";
+// import { useHistory } from "react-router-dom";
+import PowerBlock from "./Components/PowerBlock/PowerBlock";
 
 function App() {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("userSessions")) || null);
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("userSessions")) || null
+  );
+
+  // const history = useHistory();
+
+  // useEffect(() => {
+  //   if (!user) history.push("/login");
+  //   else history.push("/");
+  // }, [user]);
 
   return (
     <div className="App">
-      <HomePage user={user} setUser={setUser} />
+      <PowerBlock user={user} setUser={setUser} />
     </div>
   );
 }

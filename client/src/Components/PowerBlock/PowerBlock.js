@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import { Route } from "react-router-dom/cjs/react-router-dom.min";
+import { Route, useHistory } from "react-router-dom";
 
+import Navbar from "../Navbar/Navbar"
+import HomePage from "../../HomePage";
 import MyPedalboards from "../MyPedalboards/MyPedalboards";
 import AllPedals from "../AllPedals/AllPedals";
 import NewPedalForm from "../NewPedalForm/NewPedalForm";
 import LoginPage from "../LoginPage/LoginPage";
-import "./HomePage.css";
+import "./PowerBlock.css";
 
 function MainPage({ user, setUser }) {
   const [users, setUsers] = useState([]);
@@ -116,9 +118,22 @@ function MainPage({ user, setUser }) {
 
   return (
     <Router>
-      {/* <Header />
-      <NavBar user={user} setUser={setUser} /> */}
+      {/* <Header /> */}
+      <Navbar user={user} setUser={setUser} />
       <Route exact path="/">
+        <HomePage
+          user={user}
+          users={users}
+          pedals={pedals}
+          pedalboards={pedalboards}
+          usersLoaded={usersLoaded}
+          pedalsLoaded={pedalsLoaded}
+          pedalboardsLoaded={pedalboardsLoaded}
+          pedalboardPedalsLoaded={pedalboardPedalsLoaded}
+          deletePedalboard={deletePedalboard}
+        />
+      </Route>
+      <Route exact path="/mypedalboards">
         <MyPedalboards
           user={user}
           users={users}

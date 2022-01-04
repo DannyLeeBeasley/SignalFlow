@@ -24185,3 +24185,695 @@ No serializer found for resource: {"id"=>1, "name"=>"SRV", "stereo"=>false, "ped
 Completed 200 OK in 54ms (Views: 1.9ms | ActiveRecord: 23.5ms | Allocations: 10347)
 
 
+Started GET "/users" for 127.0.0.1 at 2022-01-04 13:18:50 -0600
+Processing by UsersController#index as */*
+Started GET "/pedals" for 127.0.0.1 at 2022-01-04 13:18:50 -0600
+Processing by PedalsController#index as */*
+Started GET "/pedalboards" for 127.0.0.1 at 2022-01-04 13:18:50 -0600
+Started GET "/pedalboard_pedals" for 127.0.0.1 at 2022-01-04 13:18:50 -0600
+Processing by PedalboardsController#index as */*
+Processing by PedalboardPedalsController#index as */*
+  [1m[36mPedalboard Load (1.6ms)[0m  [1m[34mSELECT "pedalboards".* FROM "pedalboards"[0m
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mUser Load (8.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.52ms)
+Completed 200 OK in 618ms (Views: 617.8ms | ActiveRecord: 26.8ms | Allocations: 11954)
+
+
+  [1m[36mPedal Load (18.3ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals"[0m
+  ↳ app/controllers/pedals_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.24ms)
+Completed 200 OK in 632ms (Views: 631.5ms | ActiveRecord: 36.2ms | Allocations: 15105)
+
+
+  [1m[36mUser Load (21.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 616ms (Views: 0.7ms | ActiveRecord: 40.8ms | Allocations: 14068)
+
+
+  [1m[36mPedal Load (17.1ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 1]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mPedal Load (2.4ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 2]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+No serializer found for resource: {"id"=>1, "name"=>"SRV", "stereo"=>false, "pedal_order"=>nil, "user_id"=>1, "created_at"=>"2022-01-04T15:32:59.840Z", "updated_at"=>"2022-01-04T15:32:59.840Z", "pedals"=>[{"id"=>1, "name"=>"Ibanez TS808 Tube Screamer", "effect_type"=>"Overdrive", "price"=>100, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://m.media-amazon.com/images/I/713LJ9zI96L._AC_SS450_.jpg", "category"=>"Gain", "created_at"=>"2022-01-04T15:32:59.724Z", "updated_at"=>"2022-01-04T15:32:59.724Z"}, {"id"=>7, "name"=>"Vox v847A Wah-Wah", "effect_type"=>"Wah", "price"=>120, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://cosmomusic.ca/product_images/vox-v847a/619ce79624daf34cb964778a/detail.jpg?c=1637672854", "category"=>"Modulation", "created_at"=>"2022-01-04T15:32:59.758Z", "updated_at"=>"2022-01-04T15:32:59.758Z"}]}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.56ms)
+Completed 200 OK in 639ms (Views: 2.4ms | ActiveRecord: 42.8ms | Allocations: 18106)
+
+
+Started GET "/pedals" for 127.0.0.1 at 2022-01-04 13:21:23 -0600
+Started GET "/users" for 127.0.0.1 at 2022-01-04 13:21:23 -0600
+Processing by PedalsController#index as */*
+Processing by UsersController#index as */*
+Started GET "/pedalboards" for 127.0.0.1 at 2022-01-04 13:21:23 -0600
+Processing by PedalboardsController#index as */*
+  [1m[36mPedal Load (11.7ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals"[0m
+  ↳ app/controllers/pedals_controller.rb:8:in `index'
+  [1m[36mUser Load (12.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.65ms)
+Completed 200 OK in 23ms (Views: 11.5ms | ActiveRecord: 11.7ms | Allocations: 4921)
+
+
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.47ms)
+Completed 200 OK in 26ms (Views: 13.4ms | ActiveRecord: 12.1ms | Allocations: 5311)
+
+
+  [1m[36mPedalboard Load (1.6ms)[0m  [1m[34mSELECT "pedalboards".* FROM "pedalboards"[0m
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+Started GET "/pedalboard_pedals" for 127.0.0.1 at 2022-01-04 13:21:23 -0600
+Processing by PedalboardPedalsController#index as */*
+  [1m[36mPedal Load (33.1ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 1]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 111ms (Views: 0.6ms | ActiveRecord: 0.5ms | Allocations: 1790)
+
+
+  [1m[36mPedal Load (10.1ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 2]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+No serializer found for resource: {"id"=>1, "name"=>"SRV", "stereo"=>false, "pedal_order"=>nil, "user_id"=>1, "created_at"=>"2022-01-04T15:32:59.840Z", "updated_at"=>"2022-01-04T15:32:59.840Z", "pedals"=>[{"id"=>1, "name"=>"Ibanez TS808 Tube Screamer", "effect_type"=>"Overdrive", "price"=>100, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://m.media-amazon.com/images/I/713LJ9zI96L._AC_SS450_.jpg", "category"=>"Gain", "created_at"=>"2022-01-04T15:32:59.724Z", "updated_at"=>"2022-01-04T15:32:59.724Z"}, {"id"=>7, "name"=>"Vox v847A Wah-Wah", "effect_type"=>"Wah", "price"=>120, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://cosmomusic.ca/product_images/vox-v847a/619ce79624daf34cb964778a/detail.jpg?c=1637672854", "category"=>"Modulation", "created_at"=>"2022-01-04T15:32:59.758Z", "updated_at"=>"2022-01-04T15:32:59.758Z"}]}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.67ms)
+Completed 200 OK in 150ms (Views: 2.7ms | ActiveRecord: 116.7ms | Allocations: 10537)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-01-04 13:21:25 -0600
+Processing by UsersController#index as */*
+Started GET "/pedalboards" for 127.0.0.1 at 2022-01-04 13:21:25 -0600
+Processing by PedalboardsController#index as */*
+Started GET "/pedalboard_pedals" for 127.0.0.1 at 2022-01-04 13:21:25 -0600
+Processing by PedalboardPedalsController#index as */*
+Started GET "/pedals" for 127.0.0.1 at 2022-01-04 13:21:25 -0600
+Processing by PedalsController#index as */*
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.84ms)
+Completed 200 OK in 70ms (Views: 68.6ms | ActiveRecord: 0.9ms | Allocations: 3150)
+
+
+  [1m[36mPedalboard Load (1.9ms)[0m  [1m[34mSELECT "pedalboards".* FROM "pedalboards"[0m
+  [1m[36mPedal Load (1.8ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals"[0m
+  ↳ app/controllers/pedals_controller.rb:8:in `index'
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 76ms (Views: 0.6ms | ActiveRecord: 2.6ms | Allocations: 3705)
+
+
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.7ms)
+Completed 200 OK in 67ms (Views: 65.1ms | ActiveRecord: 1.8ms | Allocations: 6438)
+
+
+  [1m[36mPedal Load (4.2ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 1]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mPedal Load (0.7ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 2]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+No serializer found for resource: {"id"=>1, "name"=>"SRV", "stereo"=>false, "pedal_order"=>nil, "user_id"=>1, "created_at"=>"2022-01-04T15:32:59.840Z", "updated_at"=>"2022-01-04T15:32:59.840Z", "pedals"=>[{"id"=>1, "name"=>"Ibanez TS808 Tube Screamer", "effect_type"=>"Overdrive", "price"=>100, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://m.media-amazon.com/images/I/713LJ9zI96L._AC_SS450_.jpg", "category"=>"Gain", "created_at"=>"2022-01-04T15:32:59.724Z", "updated_at"=>"2022-01-04T15:32:59.724Z"}, {"id"=>7, "name"=>"Vox v847A Wah-Wah", "effect_type"=>"Wah", "price"=>120, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://cosmomusic.ca/product_images/vox-v847a/619ce79624daf34cb964778a/detail.jpg?c=1637672854", "category"=>"Modulation", "created_at"=>"2022-01-04T15:32:59.758Z", "updated_at"=>"2022-01-04T15:32:59.758Z"}]}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.07ms)
+Completed 200 OK in 108ms (Views: 1.8ms | ActiveRecord: 6.8ms | Allocations: 11405)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-01-04 13:21:36 -0600
+Processing by UsersController#index as */*
+Started GET "/pedals" for 127.0.0.1 at 2022-01-04 13:21:36 -0600
+Processing by PedalsController#index as */*
+Started GET "/pedalboards" for 127.0.0.1 at 2022-01-04 13:21:36 -0600
+Processing by PedalboardsController#index as */*
+Started GET "/pedalboard_pedals" for 127.0.0.1 at 2022-01-04 13:21:36 -0600
+Processing by PedalboardPedalsController#index as */*
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.53ms)
+Completed 200 OK in 35ms (Views: 31.7ms | ActiveRecord: 3.2ms | Allocations: 3198)
+
+
+  [1m[36mPedal Load (24.5ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals"[0m
+  ↳ app/controllers/pedals_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.88ms)
+Completed 200 OK in 50ms (Views: 25.3ms | ActiveRecord: 24.5ms | Allocations: 6181)
+
+
+  [1m[36mPedalboard Load (24.4ms)[0m  [1m[34mSELECT "pedalboards".* FROM "pedalboards"[0m
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mPedal Load (21.5ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 1]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mUser Load (4.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 100ms (Views: 0.7ms | ActiveRecord: 4.5ms | Allocations: 7345)
+
+
+  [1m[36mPedal Load (29.9ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 2]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+No serializer found for resource: {"id"=>1, "name"=>"SRV", "stereo"=>false, "pedal_order"=>nil, "user_id"=>1, "created_at"=>"2022-01-04T15:32:59.840Z", "updated_at"=>"2022-01-04T15:32:59.840Z", "pedals"=>[{"id"=>1, "name"=>"Ibanez TS808 Tube Screamer", "effect_type"=>"Overdrive", "price"=>100, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://m.media-amazon.com/images/I/713LJ9zI96L._AC_SS450_.jpg", "category"=>"Gain", "created_at"=>"2022-01-04T15:32:59.724Z", "updated_at"=>"2022-01-04T15:32:59.724Z"}, {"id"=>7, "name"=>"Vox v847A Wah-Wah", "effect_type"=>"Wah", "price"=>120, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://cosmomusic.ca/product_images/vox-v847a/619ce79624daf34cb964778a/detail.jpg?c=1637672854", "category"=>"Modulation", "created_at"=>"2022-01-04T15:32:59.758Z", "updated_at"=>"2022-01-04T15:32:59.758Z"}]}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.2ms)
+Completed 200 OK in 120ms (Views: 2.2ms | ActiveRecord: 75.7ms | Allocations: 10573)
+
+
+Started GET "/pedalboards" for 127.0.0.1 at 2022-01-04 13:22:24 -0600
+Processing by PedalboardsController#index as */*
+Started GET "/pedals" for 127.0.0.1 at 2022-01-04 13:22:24 -0600
+Started GET "/users" for 127.0.0.1 at 2022-01-04 13:22:24 -0600
+Started GET "/pedalboard_pedals" for 127.0.0.1 at 2022-01-04 13:22:24 -0600
+Processing by PedalboardPedalsController#index as */*
+Processing by UsersController#index as */*
+Processing by PedalsController#index as */*
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 12ms (Views: 0.6ms | ActiveRecord: 0.9ms | Allocations: 1502)
+
+
+  [1m[36mPedalboard Load (0.7ms)[0m  [1m[34mSELECT "pedalboards".* FROM "pedalboards"[0m
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mUser Load (9.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.62ms)
+Completed 200 OK in 19ms (Views: 8.5ms | ActiveRecord: 9.4ms | Allocations: 3008)
+
+
+  [1m[36mPedal Load (15.2ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals"[0m
+  ↳ app/controllers/pedals_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (18.3ms)
+  [1m[36mPedal Load (34.6ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 1]]
+Completed 200 OK in 50ms (Views: 33.9ms | ActiveRecord: 15.2ms | Allocations: 6355)
+
+
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mPedal Load (3.6ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 2]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+No serializer found for resource: {"id"=>1, "name"=>"SRV", "stereo"=>false, "pedal_order"=>nil, "user_id"=>1, "created_at"=>"2022-01-04T15:32:59.840Z", "updated_at"=>"2022-01-04T15:32:59.840Z", "pedals"=>[{"id"=>1, "name"=>"Ibanez TS808 Tube Screamer", "effect_type"=>"Overdrive", "price"=>100, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://m.media-amazon.com/images/I/713LJ9zI96L._AC_SS450_.jpg", "category"=>"Gain", "created_at"=>"2022-01-04T15:32:59.724Z", "updated_at"=>"2022-01-04T15:32:59.724Z"}, {"id"=>7, "name"=>"Vox v847A Wah-Wah", "effect_type"=>"Wah", "price"=>120, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://cosmomusic.ca/product_images/vox-v847a/619ce79624daf34cb964778a/detail.jpg?c=1637672854", "category"=>"Modulation", "created_at"=>"2022-01-04T15:32:59.758Z", "updated_at"=>"2022-01-04T15:32:59.758Z"}]}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (0.92ms)
+Completed 200 OK in 75ms (Views: 1.6ms | ActiveRecord: 38.9ms | Allocations: 11410)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-01-04 13:49:01 -0600
+Started GET "/pedalboard_pedals" for 127.0.0.1 at 2022-01-04 13:49:01 -0600
+Started GET "/pedals" for 127.0.0.1 at 2022-01-04 13:49:01 -0600
+Started GET "/pedalboards" for 127.0.0.1 at 2022-01-04 13:49:01 -0600
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PedalsController#index as */*
+Processing by PedalboardsController#index as */*
+Processing by UsersController#index as */*
+Processing by PedalboardPedalsController#index as */*
+  [1m[36mUser Load (15.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+  [1m[36mPedal Load (96.7ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals"[0m
+  ↳ app/controllers/pedals_controller.rb:8:in `index'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.36ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 80ms (Views: 3.1ms | ActiveRecord: 15.9ms | Allocations: 9724)
+
+
+  [1m[36mPedalboard Load (60.7ms)[0m  [1m[34mSELECT "pedalboards".* FROM "pedalboards"[0m
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.65ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.19ms)
+Completed 200 OK in 145ms (Views: 47.4ms | ActiveRecord: 92.3ms | Allocations: 23275)
+
+
+Completed 200 OK in 210ms (Views: 48.8ms | ActiveRecord: 147.9ms | Allocations: 36129)
+
+
+  [1m[36mPedal Load (64.5ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 1]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mPedal Load (0.6ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 2]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+No serializer found for resource: {"id"=>1, "name"=>"SRV", "stereo"=>false, "pedal_order"=>nil, "user_id"=>1, "created_at"=>"2022-01-04T15:32:59.840Z", "updated_at"=>"2022-01-04T15:32:59.840Z", "pedals"=>[{"id"=>1, "name"=>"Ibanez TS808 Tube Screamer", "effect_type"=>"Overdrive", "price"=>100, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://m.media-amazon.com/images/I/713LJ9zI96L._AC_SS450_.jpg", "category"=>"Gain", "created_at"=>"2022-01-04T15:32:59.724Z", "updated_at"=>"2022-01-04T15:32:59.724Z"}, {"id"=>7, "name"=>"Vox v847A Wah-Wah", "effect_type"=>"Wah", "price"=>120, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://cosmomusic.ca/product_images/vox-v847a/619ce79624daf34cb964778a/detail.jpg?c=1637672854", "category"=>"Modulation", "created_at"=>"2022-01-04T15:32:59.758Z", "updated_at"=>"2022-01-04T15:32:59.758Z"}]}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (6.54ms)
+Completed 200 OK in 294ms (Views: 7.3ms | ActiveRecord: 194.8ms | Allocations: 35813)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-01-04 13:50:26 -0600
+Processing by UsersController#index as */*
+Started GET "/pedalboards" for 127.0.0.1 at 2022-01-04 13:50:26 -0600
+Processing by PedalboardsController#index as */*
+Started GET "/pedalboard_pedals" for 127.0.0.1 at 2022-01-04 13:50:26 -0600
+Processing by PedalboardPedalsController#index as */*
+Started GET "/pedals" for 127.0.0.1 at 2022-01-04 13:50:26 -0600
+Processing by PedalsController#index as */*
+  [1m[36mUser Load (25.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.51ms)
+Completed 200 OK in 54ms (Views: 27.7ms | ActiveRecord: 25.8ms | Allocations: 3156)
+
+
+  [1m[36mPedal Load (1.2ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals"[0m
+  ↳ app/controllers/pedals_controller.rb:8:in `index'
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `authorize'
+  [1m[36mPedalboard Load (11.0ms)[0m  [1m[34mSELECT "pedalboards".* FROM "pedalboards"[0m
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.54ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 69ms (Views: 1.1ms | ActiveRecord: 1.9ms | Allocations: 6514)
+
+
+Completed 200 OK in 66ms (Views: 64.7ms | ActiveRecord: 1.2ms | Allocations: 6078)
+
+
+  [1m[36mPedal Load (1.7ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 1]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mPedal Load (0.6ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 2]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+No serializer found for resource: {"id"=>1, "name"=>"SRV", "stereo"=>false, "pedal_order"=>nil, "user_id"=>1, "created_at"=>"2022-01-04T15:32:59.840Z", "updated_at"=>"2022-01-04T15:32:59.840Z", "pedals"=>[{"id"=>1, "name"=>"Ibanez TS808 Tube Screamer", "effect_type"=>"Overdrive", "price"=>100, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://m.media-amazon.com/images/I/713LJ9zI96L._AC_SS450_.jpg", "category"=>"Gain", "created_at"=>"2022-01-04T15:32:59.724Z", "updated_at"=>"2022-01-04T15:32:59.724Z"}, {"id"=>7, "name"=>"Vox v847A Wah-Wah", "effect_type"=>"Wah", "price"=>120, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://cosmomusic.ca/product_images/vox-v847a/619ce79624daf34cb964778a/detail.jpg?c=1637672854", "category"=>"Modulation", "created_at"=>"2022-01-04T15:32:59.758Z", "updated_at"=>"2022-01-04T15:32:59.758Z"}]}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (16.01ms)
+Completed 200 OK in 121ms (Views: 17.0ms | ActiveRecord: 31.1ms | Allocations: 10574)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-01-04 13:50:28 -0600
+Processing by UsersController#index as */*
+Started GET "/pedalboards" for 127.0.0.1 at 2022-01-04 13:50:28 -0600
+Processing by PedalboardsController#index as */*
+Started GET "/pedals" for 127.0.0.1 at 2022-01-04 13:50:28 -0600
+Processing by PedalsController#index as */*
+Started GET "/pedalboard_pedals" for 127.0.0.1 at 2022-01-04 13:50:28 -0600
+Processing by PedalboardPedalsController#index as */*
+  [1m[36mUser Load (5.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.35ms)
+Completed 200 OK in 62ms (Views: 56.4ms | ActiveRecord: 5.4ms | Allocations: 3152)
+
+
+  [1m[36mPedalboard Load (1.3ms)[0m  [1m[34mSELECT "pedalboards".* FROM "pedalboards"[0m
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mPedal Load (5.5ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals"[0m
+  ↳ app/controllers/pedals_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.72ms)
+Completed 200 OK in 91ms (Views: 84.5ms | ActiveRecord: 5.5ms | Allocations: 6373)
+
+
+  [1m[36mUser Load (25.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 100ms (Views: 0.4ms | ActiveRecord: 25.0ms | Allocations: 6464)
+
+
+  [1m[36mPedal Load (21.8ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 1]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mPedal Load (4.3ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 2]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+No serializer found for resource: {"id"=>1, "name"=>"SRV", "stereo"=>false, "pedal_order"=>nil, "user_id"=>1, "created_at"=>"2022-01-04T15:32:59.840Z", "updated_at"=>"2022-01-04T15:32:59.840Z", "pedals"=>[{"id"=>1, "name"=>"Ibanez TS808 Tube Screamer", "effect_type"=>"Overdrive", "price"=>100, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://m.media-amazon.com/images/I/713LJ9zI96L._AC_SS450_.jpg", "category"=>"Gain", "created_at"=>"2022-01-04T15:32:59.724Z", "updated_at"=>"2022-01-04T15:32:59.724Z"}, {"id"=>7, "name"=>"Vox v847A Wah-Wah", "effect_type"=>"Wah", "price"=>120, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://cosmomusic.ca/product_images/vox-v847a/619ce79624daf34cb964778a/detail.jpg?c=1637672854", "category"=>"Modulation", "created_at"=>"2022-01-04T15:32:59.758Z", "updated_at"=>"2022-01-04T15:32:59.758Z"}]}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (0.87ms)
+Completed 200 OK in 152ms (Views: 1.5ms | ActiveRecord: 46.3ms | Allocations: 11390)
+
+
+Started GET "/babel/parser/lib/index.js" for 127.0.0.1 at 2022-01-04 13:52:13 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/babel/parser/lib/index.js"):
+  
+Started GET "/babel/parser/lib/index.js" for 127.0.0.1 at 2022-01-04 13:52:13 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/babel/parser/lib/index.js"):
+  
+Started GET "/users" for 127.0.0.1 at 2022-01-04 13:52:13 -0600
+Processing by UsersController#index as */*
+Started GET "/pedals" for 127.0.0.1 at 2022-01-04 13:52:13 -0600
+Processing by PedalsController#index as */*
+Started GET "/pedalboards" for 127.0.0.1 at 2022-01-04 13:52:14 -0600
+Processing by PedalboardsController#index as */*
+Started GET "/pedalboard_pedals" for 127.0.0.1 at 2022-01-04 13:52:14 -0600
+Processing by PedalboardPedalsController#index as */*
+  [1m[36mPedalboard Load (2.9ms)[0m  [1m[34mSELECT "pedalboards".* FROM "pedalboards"[0m
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mPedal Load (13.5ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals"[0m
+  ↳ app/controllers/pedals_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.92ms)
+  [1m[36mUser Load (6.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (20.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/application_controller.rb:7:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 46ms (Views: 32.3ms | ActiveRecord: 13.5ms | Allocations: 5974)
+
+
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 36ms (Views: 0.9ms | ActiveRecord: 6.6ms | Allocations: 5809)
+
+
+  ↳ app/controllers/users_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.54ms)
+Completed 200 OK in 59ms (Views: 37.6ms | ActiveRecord: 20.9ms | Allocations: 8564)
+
+
+  [1m[36mPedal Load (19.4ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 1]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mPedal Load (1.0ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 2]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+No serializer found for resource: {"id"=>1, "name"=>"SRV", "stereo"=>false, "pedal_order"=>nil, "user_id"=>1, "created_at"=>"2022-01-04T15:32:59.840Z", "updated_at"=>"2022-01-04T15:32:59.840Z", "pedals"=>[{"id"=>1, "name"=>"Ibanez TS808 Tube Screamer", "effect_type"=>"Overdrive", "price"=>100, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://m.media-amazon.com/images/I/713LJ9zI96L._AC_SS450_.jpg", "category"=>"Gain", "created_at"=>"2022-01-04T15:32:59.724Z", "updated_at"=>"2022-01-04T15:32:59.724Z"}, {"id"=>7, "name"=>"Vox v847A Wah-Wah", "effect_type"=>"Wah", "price"=>120, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://cosmomusic.ca/product_images/vox-v847a/619ce79624daf34cb964778a/detail.jpg?c=1637672854", "category"=>"Modulation", "created_at"=>"2022-01-04T15:32:59.758Z", "updated_at"=>"2022-01-04T15:32:59.758Z"}]}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (0.98ms)
+Completed 200 OK in 65ms (Views: 1.7ms | ActiveRecord: 23.3ms | Allocations: 10607)
+
+
+Started GET "/pedalboards" for 127.0.0.1 at 2022-01-04 13:52:32 -0600
+Started GET "/pedals" for 127.0.0.1 at 2022-01-04 13:52:32 -0600
+Started GET "/pedalboard_pedals" for 127.0.0.1 at 2022-01-04 13:52:32 -0600
+Processing by PedalsController#index as */*
+Started GET "/users" for 127.0.0.1 at 2022-01-04 13:52:32 -0600
+Processing by PedalboardPedalsController#index as */*
+Processing by PedalboardsController#index as */*
+Processing by UsersController#index as */*
+  [1m[36mPedalboard Load (1.1ms)[0m  [1m[34mSELECT "pedalboards".* FROM "pedalboards"[0m
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.4ms)
+Completed 200 OK in 18ms (Views: 15.6ms | ActiveRecord: 1.6ms | Allocations: 1864)
+
+
+  [1m[36mPedal Load (11.2ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals"[0m
+  ↳ app/controllers/pedals_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.97ms)
+Completed 200 OK in 35ms (Views: 23.1ms | ActiveRecord: 11.2ms | Allocations: 6463)
+
+
+  [1m[36mUser Load (27.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 44ms (Views: 0.8ms | ActiveRecord: 27.1ms | Allocations: 6742)
+
+
+  [1m[36mPedal Load (50.0ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 1]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mPedal Load (0.7ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 2]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+No serializer found for resource: {"id"=>1, "name"=>"SRV", "stereo"=>false, "pedal_order"=>nil, "user_id"=>1, "created_at"=>"2022-01-04T15:32:59.840Z", "updated_at"=>"2022-01-04T15:32:59.840Z", "pedals"=>[{"id"=>1, "name"=>"Ibanez TS808 Tube Screamer", "effect_type"=>"Overdrive", "price"=>100, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://m.media-amazon.com/images/I/713LJ9zI96L._AC_SS450_.jpg", "category"=>"Gain", "created_at"=>"2022-01-04T15:32:59.724Z", "updated_at"=>"2022-01-04T15:32:59.724Z"}, {"id"=>7, "name"=>"Vox v847A Wah-Wah", "effect_type"=>"Wah", "price"=>120, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://cosmomusic.ca/product_images/vox-v847a/619ce79624daf34cb964778a/detail.jpg?c=1637672854", "category"=>"Modulation", "created_at"=>"2022-01-04T15:32:59.758Z", "updated_at"=>"2022-01-04T15:32:59.758Z"}]}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.26ms)
+Completed 200 OK in 76ms (Views: 2.0ms | ActiveRecord: 51.9ms | Allocations: 10082)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-01-04 13:52:45 -0600
+Processing by UsersController#index as */*
+Started GET "/pedals" for 127.0.0.1 at 2022-01-04 13:52:45 -0600
+Processing by PedalsController#index as */*
+Started GET "/pedalboards" for 127.0.0.1 at 2022-01-04 13:52:45 -0600
+Processing by PedalboardsController#index as */*
+Started GET "/pedalboard_pedals" for 127.0.0.1 at 2022-01-04 13:52:45 -0600
+Processing by PedalboardPedalsController#index as */*
+  [1m[36mPedal Load (0.9ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals"[0m
+  ↳ app/controllers/pedals_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.76ms)
+Completed 200 OK in 39ms (Views: 38.0ms | ActiveRecord: 0.9ms | Allocations: 5129)
+
+
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 23ms (Views: 0.5ms | ActiveRecord: 1.0ms | Allocations: 4520)
+
+
+  [1m[36mPedalboard Load (34.3ms)[0m  [1m[34mSELECT "pedalboards".* FROM "pedalboards"[0m
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mUser Load (38.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.47ms)
+Completed 200 OK in 81ms (Views: 41.8ms | ActiveRecord: 38.7ms | Allocations: 8495)
+
+
+  [1m[36mPedal Load (28.3ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 1]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mPedal Load (10.0ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 2]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+No serializer found for resource: {"id"=>1, "name"=>"SRV", "stereo"=>false, "pedal_order"=>nil, "user_id"=>1, "created_at"=>"2022-01-04T15:32:59.840Z", "updated_at"=>"2022-01-04T15:32:59.840Z", "pedals"=>[{"id"=>1, "name"=>"Ibanez TS808 Tube Screamer", "effect_type"=>"Overdrive", "price"=>100, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://m.media-amazon.com/images/I/713LJ9zI96L._AC_SS450_.jpg", "category"=>"Gain", "created_at"=>"2022-01-04T15:32:59.724Z", "updated_at"=>"2022-01-04T15:32:59.724Z"}, {"id"=>7, "name"=>"Vox v847A Wah-Wah", "effect_type"=>"Wah", "price"=>120, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://cosmomusic.ca/product_images/vox-v847a/619ce79624daf34cb964778a/detail.jpg?c=1637672854", "category"=>"Modulation", "created_at"=>"2022-01-04T15:32:59.758Z", "updated_at"=>"2022-01-04T15:32:59.758Z"}]}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (0.93ms)
+Completed 200 OK in 103ms (Views: 1.6ms | ActiveRecord: 72.7ms | Allocations: 10547)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-01-04 13:52:46 -0600
+Started GET "/pedals" for 127.0.0.1 at 2022-01-04 13:52:46 -0600
+Processing by UsersController#index as */*
+Processing by PedalsController#index as */*
+Started GET "/pedalboards" for 127.0.0.1 at 2022-01-04 13:52:46 -0600
+Started GET "/pedalboard_pedals" for 127.0.0.1 at 2022-01-04 13:52:46 -0600
+Processing by PedalboardsController#index as */*
+Processing by PedalboardPedalsController#index as */*
+  [1m[36mUser Load (5.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.38ms)
+  [1m[36mPedal Load (4.7ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals"[0m
+Completed 200 OK in 51ms (Views: 44.9ms | ActiveRecord: 5.7ms | Allocations: 2707)
+
+
+  ↳ app/controllers/pedals_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.61ms)
+Completed 200 OK in 57ms (Views: 52.1ms | ActiveRecord: 4.7ms | Allocations: 6204)
+
+
+  [1m[36mPedalboard Load (18.8ms)[0m  [1m[34mSELECT "pedalboards".* FROM "pedalboards"[0m
+  [1m[36mUser Load (18.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  ↳ app/controllers/application_controller.rb:7:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 60ms (Views: 0.5ms | ActiveRecord: 18.9ms | Allocations: 6359)
+
+
+  [1m[36mPedal Load (10.0ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 1]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mPedal Load (2.8ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 2]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+No serializer found for resource: {"id"=>1, "name"=>"SRV", "stereo"=>false, "pedal_order"=>nil, "user_id"=>1, "created_at"=>"2022-01-04T15:32:59.840Z", "updated_at"=>"2022-01-04T15:32:59.840Z", "pedals"=>[{"id"=>1, "name"=>"Ibanez TS808 Tube Screamer", "effect_type"=>"Overdrive", "price"=>100, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://m.media-amazon.com/images/I/713LJ9zI96L._AC_SS450_.jpg", "category"=>"Gain", "created_at"=>"2022-01-04T15:32:59.724Z", "updated_at"=>"2022-01-04T15:32:59.724Z"}, {"id"=>7, "name"=>"Vox v847A Wah-Wah", "effect_type"=>"Wah", "price"=>120, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://cosmomusic.ca/product_images/vox-v847a/619ce79624daf34cb964778a/detail.jpg?c=1637672854", "category"=>"Modulation", "created_at"=>"2022-01-04T15:32:59.758Z", "updated_at"=>"2022-01-04T15:32:59.758Z"}]}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (0.92ms)
+Completed 200 OK in 78ms (Views: 1.5ms | ActiveRecord: 31.6ms | Allocations: 9909)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-01-04 13:53:03 -0600
+Processing by UsersController#index as */*
+Started GET "/pedals" for 127.0.0.1 at 2022-01-04 13:53:03 -0600
+Processing by PedalsController#index as */*
+Started GET "/pedalboards" for 127.0.0.1 at 2022-01-04 13:53:03 -0600
+Processing by PedalboardsController#index as */*
+Started GET "/pedalboard_pedals" for 127.0.0.1 at 2022-01-04 13:53:03 -0600
+Processing by PedalboardPedalsController#index as */*
+  [1m[36mPedal Load (0.5ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals"[0m
+  ↳ app/controllers/pedals_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.94ms)
+Completed 200 OK in 76ms (Views: 74.9ms | ActiveRecord: 0.5ms | Allocations: 5040)
+
+
+  [1m[36mPedalboard Load (3.0ms)[0m  [1m[34mSELECT "pedalboards".* FROM "pedalboards"[0m
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mUser Load (21.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.38ms)
+Completed 200 OK in 95ms (Views: 73.0ms | ActiveRecord: 21.8ms | Allocations: 7505)
+
+
+  [1m[36mPedal Load (9.4ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 1]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mUser Load (10.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `authorize'
+  [1m[36mPedal Load (4.4ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 60ms (Views: 3.3ms | ActiveRecord: 10.5ms | Allocations: 7751)
+
+
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+No serializer found for resource: {"id"=>1, "name"=>"SRV", "stereo"=>false, "pedal_order"=>nil, "user_id"=>1, "created_at"=>"2022-01-04T15:32:59.840Z", "updated_at"=>"2022-01-04T15:32:59.840Z", "pedals"=>[{"id"=>1, "name"=>"Ibanez TS808 Tube Screamer", "effect_type"=>"Overdrive", "price"=>100, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://m.media-amazon.com/images/I/713LJ9zI96L._AC_SS450_.jpg", "category"=>"Gain", "created_at"=>"2022-01-04T15:32:59.724Z", "updated_at"=>"2022-01-04T15:32:59.724Z"}, {"id"=>7, "name"=>"Vox v847A Wah-Wah", "effect_type"=>"Wah", "price"=>120, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://cosmomusic.ca/product_images/vox-v847a/619ce79624daf34cb964778a/detail.jpg?c=1637672854", "category"=>"Modulation", "created_at"=>"2022-01-04T15:32:59.758Z", "updated_at"=>"2022-01-04T15:32:59.758Z"}]}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.09ms)
+Completed 200 OK in 93ms (Views: 2.2ms | ActiveRecord: 16.8ms | Allocations: 10556)
+
+
+Started GET "/pedalboard_pedals" for 127.0.0.1 at 2022-01-04 14:10:41 -0600
+Started GET "/users" for 127.0.0.1 at 2022-01-04 14:10:41 -0600
+Started GET "/pedals" for 127.0.0.1 at 2022-01-04 14:10:41 -0600
+Started GET "/pedalboards" for 127.0.0.1 at 2022-01-04 14:10:41 -0600
+  [1m[35m (7.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+Processing by PedalboardPedalsController#index as */*
+Processing by PedalboardsController#index as */*
+Processing by PedalsController#index as */*
+  [1m[36mUser Load (7.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+  [1m[36mPedalboard Load (0.9ms)[0m  [1m[34mSELECT "pedalboards".* FROM "pedalboards"[0m
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mPedal Load (1.4ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals"[0m
+  ↳ app/controllers/pedals_controller.rb:8:in `index'
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.75ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.84ms)
+Completed 200 OK in 109ms (Views: 71.1ms | ActiveRecord: 24.4ms | Allocations: 21812)
+
+
+Filter chain halted as :authorize rendered or redirected
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.31ms)
+Completed 401 Unauthorized in 140ms (Views: 16.6ms | ActiveRecord: 25.3ms | Allocations: 30539)
+
+
+Completed 200 OK in 123ms (Views: 62.9ms | ActiveRecord: 55.9ms | Allocations: 29597)
+
+
+  [1m[36mPedal Load (8.2ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 1]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mPedal Load (0.5ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 2]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+No serializer found for resource: {"id"=>1, "name"=>"SRV", "stereo"=>false, "pedal_order"=>nil, "user_id"=>1, "created_at"=>"2022-01-04T15:32:59.840Z", "updated_at"=>"2022-01-04T15:32:59.840Z", "pedals"=>[{"id"=>1, "name"=>"Ibanez TS808 Tube Screamer", "effect_type"=>"Overdrive", "price"=>100, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://m.media-amazon.com/images/I/713LJ9zI96L._AC_SS450_.jpg", "category"=>"Gain", "created_at"=>"2022-01-04T15:32:59.724Z", "updated_at"=>"2022-01-04T15:32:59.724Z"}, {"id"=>7, "name"=>"Vox v847A Wah-Wah", "effect_type"=>"Wah", "price"=>120, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://cosmomusic.ca/product_images/vox-v847a/619ce79624daf34cb964778a/detail.jpg?c=1637672854", "category"=>"Modulation", "created_at"=>"2022-01-04T15:32:59.758Z", "updated_at"=>"2022-01-04T15:32:59.758Z"}]}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (4.26ms)
+Completed 200 OK in 170ms (Views: 5.0ms | ActiveRecord: 89.6ms | Allocations: 35245)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-01-04 14:12:27 -0600
+Started GET "/pedalboard_pedals" for 127.0.0.1 at 2022-01-04 14:12:27 -0600
+Started GET "/pedals" for 127.0.0.1 at 2022-01-04 14:12:27 -0600
+Processing by PedalsController#index as */*
+Started GET "/pedalboards" for 127.0.0.1 at 2022-01-04 14:12:27 -0600
+Processing by PedalboardsController#index as */*
+Processing by UsersController#index as */*
+Processing by PedalboardPedalsController#index as */*
+  [1m[36mPedal Load (1.2ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals"[0m
+  ↳ app/controllers/pedals_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.73ms)
+Completed 200 OK in 39ms (Views: 33.8ms | ActiveRecord: 1.2ms | Allocations: 4394)
+
+
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.8ms)
+Completed 200 OK in 53ms (Views: 51.9ms | ActiveRecord: 0.7ms | Allocations: 5135)
+
+
+  [1m[36mUser Load (9.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+  [1m[36mPedalboard Load (12.0ms)[0m  [1m[34mSELECT "pedalboards".* FROM "pedalboards"[0m
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 63ms (Views: 0.9ms | ActiveRecord: 40.2ms | Allocations: 6007)
+
+
+  [1m[36mPedal Load (1.4ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 1]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mPedal Load (3.6ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 2]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+No serializer found for resource: {"id"=>1, "name"=>"SRV", "stereo"=>false, "pedal_order"=>nil, "user_id"=>1, "created_at"=>"2022-01-04T15:32:59.840Z", "updated_at"=>"2022-01-04T15:32:59.840Z", "pedals"=>[{"id"=>1, "name"=>"Ibanez TS808 Tube Screamer", "effect_type"=>"Overdrive", "price"=>100, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://m.media-amazon.com/images/I/713LJ9zI96L._AC_SS450_.jpg", "category"=>"Gain", "created_at"=>"2022-01-04T15:32:59.724Z", "updated_at"=>"2022-01-04T15:32:59.724Z"}, {"id"=>7, "name"=>"Vox v847A Wah-Wah", "effect_type"=>"Wah", "price"=>120, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://cosmomusic.ca/product_images/vox-v847a/619ce79624daf34cb964778a/detail.jpg?c=1637672854", "category"=>"Modulation", "created_at"=>"2022-01-04T15:32:59.758Z", "updated_at"=>"2022-01-04T15:32:59.758Z"}]}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (10.67ms)
+Completed 200 OK in 108ms (Views: 12.4ms | ActiveRecord: 25.6ms | Allocations: 10458)
+
+
+Started GET "/babel/parser/lib/index.js" for 127.0.0.1 at 2022-01-04 14:12:27 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/babel/parser/lib/index.js"):
+  
+Started GET "/babel/parser/lib/index.js" for 127.0.0.1 at 2022-01-04 14:12:29 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/babel/parser/lib/index.js"):
+  
+Started GET "/babel/parser/lib/index.js" for 127.0.0.1 at 2022-01-04 14:12:29 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/babel/parser/lib/index.js"):
+  
+Started GET "/babel/parser/lib/index.js" for 127.0.0.1 at 2022-01-04 14:12:30 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/babel/parser/lib/index.js"):
+  
+Started GET "/babel/parser/lib/index.js" for 127.0.0.1 at 2022-01-04 14:12:30 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/babel/parser/lib/index.js"):
+  
+Started GET "/babel/parser/lib/index.js" for 127.0.0.1 at 2022-01-04 14:12:30 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/babel/parser/lib/index.js"):
+  
+Started GET "/babel/parser/lib/index.js" for 127.0.0.1 at 2022-01-04 14:12:30 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/babel/parser/lib/index.js"):
+  
+Started GET "/babel/parser/lib/index.js" for 127.0.0.1 at 2022-01-04 14:12:30 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/babel/parser/lib/index.js"):
+  
+Started GET "/babel/parser/lib/index.js" for 127.0.0.1 at 2022-01-04 14:12:30 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/babel/parser/lib/index.js"):
+  
+Started GET "/users" for 127.0.0.1 at 2022-01-04 14:12:30 -0600
+Processing by UsersController#index as */*
+Started GET "/pedals" for 127.0.0.1 at 2022-01-04 14:12:30 -0600
+Processing by PedalsController#index as */*
+Started GET "/pedalboards" for 127.0.0.1 at 2022-01-04 14:12:30 -0600
+Processing by PedalboardsController#index as */*
+Started GET "/pedalboard_pedals" for 127.0.0.1 at 2022-01-04 14:12:30 -0600
+Processing by PedalboardPedalsController#index as */*
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.45ms)
+Completed 200 OK in 48ms (Views: 46.2ms | ActiveRecord: 1.2ms | Allocations: 3290)
+
+
+  [1m[36mUser Load (5.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `authorize'
+  [1m[36mPedal Load (15.1ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 25ms (Views: 0.8ms | ActiveRecord: 5.9ms | Allocations: 2402)
+
+
+  ↳ app/controllers/pedals_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.67ms)
+  [1m[36mPedalboard Load (24.0ms)[0m  [1m[34mSELECT "pedalboards".* FROM "pedalboards"[0m
+Completed 200 OK in 51ms (Views: 35.6ms | ActiveRecord: 15.1ms | Allocations: 6633)
+
+
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mPedal Load (11.6ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 1]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mPedal Load (3.8ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 2]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+No serializer found for resource: {"id"=>1, "name"=>"SRV", "stereo"=>false, "pedal_order"=>nil, "user_id"=>1, "created_at"=>"2022-01-04T15:32:59.840Z", "updated_at"=>"2022-01-04T15:32:59.840Z", "pedals"=>[{"id"=>1, "name"=>"Ibanez TS808 Tube Screamer", "effect_type"=>"Overdrive", "price"=>100, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://m.media-amazon.com/images/I/713LJ9zI96L._AC_SS450_.jpg", "category"=>"Gain", "created_at"=>"2022-01-04T15:32:59.724Z", "updated_at"=>"2022-01-04T15:32:59.724Z"}, {"id"=>7, "name"=>"Vox v847A Wah-Wah", "effect_type"=>"Wah", "price"=>120, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://cosmomusic.ca/product_images/vox-v847a/619ce79624daf34cb964778a/detail.jpg?c=1637672854", "category"=>"Modulation", "created_at"=>"2022-01-04T15:32:59.758Z", "updated_at"=>"2022-01-04T15:32:59.758Z"}]}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.01ms)
+Completed 200 OK in 86ms (Views: 1.8ms | ActiveRecord: 39.4ms | Allocations: 10694)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-01-04 14:12:30 -0600
+Processing by UsersController#index as */*
+Started GET "/pedalboard_pedals" for 127.0.0.1 at 2022-01-04 14:12:30 -0600
+Started GET "/pedals" for 127.0.0.1 at 2022-01-04 14:12:30 -0600
+Processing by PedalsController#index as */*
+Started GET "/pedalboards" for 127.0.0.1 at 2022-01-04 14:12:30 -0600
+Processing by PedalboardsController#index as */*
+Processing by PedalboardPedalsController#index as */*
+  [1m[36mUser Load (14.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+Completed 200 OK in 26ms (Views: 10.9ms | ActiveRecord: 14.3ms | Allocations: 3141)
+
+
+  [1m[36mPedalboard Load (1.5ms)[0m  [1m[34mSELECT "pedalboards".* FROM "pedalboards"[0m
+  [1m[36mPedal Load (2.9ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals"[0m
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  ↳ app/controllers/pedals_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.6ms)
+Completed 200 OK in 46ms (Views: 42.3ms | ActiveRecord: 2.9ms | Allocations: 6132)
+
+
+  [1m[36mUser Load (66.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 86ms (Views: 0.5ms | ActiveRecord: 66.6ms | Allocations: 6289)
+
+
+  [1m[36mPedal Load (85.6ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 1]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+  [1m[36mPedal Load (33.0ms)[0m  [1m[34mSELECT "pedals".* FROM "pedals" INNER JOIN "pedalboard_pedals" ON "pedals"."id" = "pedalboard_pedals"."pedal_id" WHERE "pedalboard_pedals"."pedalboard_id" = $1[0m  [["pedalboard_id", 2]]
+  ↳ app/controllers/pedalboards_controller.rb:8:in `index'
+No serializer found for resource: {"id"=>1, "name"=>"SRV", "stereo"=>false, "pedal_order"=>nil, "user_id"=>1, "created_at"=>"2022-01-04T15:32:59.840Z", "updated_at"=>"2022-01-04T15:32:59.840Z", "pedals"=>[{"id"=>1, "name"=>"Ibanez TS808 Tube Screamer", "effect_type"=>"Overdrive", "price"=>100, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://m.media-amazon.com/images/I/713LJ9zI96L._AC_SS450_.jpg", "category"=>"Gain", "created_at"=>"2022-01-04T15:32:59.724Z", "updated_at"=>"2022-01-04T15:32:59.724Z"}, {"id"=>7, "name"=>"Vox v847A Wah-Wah", "effect_type"=>"Wah", "price"=>120, "stereo"=>false, "number_of_inputs"=>1, "number_of_outputs"=>1, "image"=>"https://cosmomusic.ca/product_images/vox-v847a/619ce79624daf34cb964778a/detail.jpg?c=1637672854", "category"=>"Modulation", "created_at"=>"2022-01-04T15:32:59.758Z", "updated_at"=>"2022-01-04T15:32:59.758Z"}]}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (1.71ms)
+Completed 200 OK in 152ms (Views: 2.3ms | ActiveRecord: 120.1ms | Allocations: 10112)
+
+

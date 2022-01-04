@@ -38,7 +38,7 @@ function LoginPage({ setUser, user }) {
   return (
     <div className="login-container">
       <h1 className="login-head">Welcome Back!</h1>
-      <p className="login-sub-title">Log In Below To Manage Your Pedalboards</p>
+      <p className="login-sub-title">Log In Below To Manage Your Pedal Collections and Pedalboards</p>
       <form onSubmit={onSubmit}>
         <div className="login-input-container">
           <label>USERNAME:</label>
