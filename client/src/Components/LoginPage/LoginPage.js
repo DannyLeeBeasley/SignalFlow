@@ -25,7 +25,6 @@ function LoginPage({ setUser, user }) {
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
         if (json.error) {
           setErrors(json.error);
           alert("Incorrect Username Or Password");

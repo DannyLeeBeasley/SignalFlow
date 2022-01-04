@@ -1,12 +1,12 @@
 import React from "react";
-import NewPedal from "./NewPedal";
-import Pedal from "./Pedal";
-import "./Pedals.css";
+import NewPedalForm from "../NewPedalForm/NewPedalForm";
+import Pedal from "../Pedal/Pedal";
+import "../../Pedals.css";
 import { Link, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-function Pedals({ pedals, setPedals, user}) {
+function AllPedals({ pedals, setPedals, user}) {
   console.log(user);
 
   return (
@@ -37,4 +37,4 @@ function Pedals({ pedals, setPedals, user}) {
   );
 }
 
-export default Pedals;
+export default AllPedals;

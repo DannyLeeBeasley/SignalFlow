@@ -1,5 +1,5 @@
 import React from "react";
-import "./Pedals.css";
+import "../../Pedals.css";
 
 function Pedal({ name, image, effectsType, stereo, ins, outs, price }) {
   return (

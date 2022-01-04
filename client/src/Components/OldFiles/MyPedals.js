@@ -1,5 +1,5 @@
 import React from "react";
-import Pedal from "./Pedal";
+import Pedal from "../Pedal/Pedal";
 import "./Pedals.css";
 
 function MyPedals({ pedals }) {

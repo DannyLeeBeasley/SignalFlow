@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import "./Pedalboard.css";
+import "../../Pedalboard.css";
 import { useHistory } from 'react-router'
 
 function Pedalboard({ name, pedals, stereo, id, addNewPedalboard, pedalboards, setPedalboards, handleDeletePedalboard }) {

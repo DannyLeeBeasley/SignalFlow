@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Pedalboard from "./Pedalboard.js";
-import "./Pedalboard.css";
+import Pedalboard from "../Pedalboard/Pedalboard.js";
 import { Link } from "react-router-dom";
+import "../../Pedalboard.css";
 
-function Pedalboards({ pedalboards, addNewPedalboard, user, handleDeletePedalboard }) {
+function MyPedalboards({ pedals, pedalboards, addNewPedalboard, user, handleDeletePedalboard }) {
   console.log("test", pedalboards);
   return (
     <div>
@@ -19,6 +19,7 @@ function Pedalboards({ pedalboards, addNewPedalboard, user, handleDeletePedalboa
         return (
           <Pedalboard
           className="pedalboard"
+          pedals={pedals}
           key={pedalboard.id}
           user={user}
           pedalboard={pedalboard}
@@ -33,4 +34,4 @@ function Pedalboards({ pedalboards, addNewPedalboard, user, handleDeletePedalboa
   );
 }
 
-export default Pedalboards;
+export default MyPedalboards;

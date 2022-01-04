@@ -5,6 +5,7 @@ class Home extends Component {
   render() {
     return (
       <div>
+        {/* <div>{user.username}</div> */}
         <svg
           width="1000"
           height="500"

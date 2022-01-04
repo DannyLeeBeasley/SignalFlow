@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Form } from "semantic-ui-react";
-import "./Pedals.css";
+import "../../Pedals.css";
 
 function NewPedal({ addNewPedal, user }) {
   console.log(user);
